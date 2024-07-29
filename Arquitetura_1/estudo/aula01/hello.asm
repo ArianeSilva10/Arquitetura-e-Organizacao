@@ -1,6 +1,6 @@
 section .data
     msg db 'Hello World!', 0xA ; 0xA - significa a quebra de linha
-                            ; de acordo com a tabela ASCII (10)
+                           ; de acordo com a tabela ASCII (10)
     tam equ $- msg  ; equ - significa igual à **** aí 
                     ; pega o numero de caracteres
 
