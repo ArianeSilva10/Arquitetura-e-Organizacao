@@ -15,10 +15,10 @@ section .text
         cmp ECX, 100
         jbe laco ; Jump if Below or Equal, se ECX for menor ou igual a 100 continua p looping
 
-        push EAX ; chama EAX onde esta armazenado o valor da soma
-        push saida ; chama a frase no inicio declarada
+        push EAX ;  Empurra o valor armazenado em EAX (a soma dos números) para a pilha. Este é o argumento para printf.
+        push saida ; Empurra o endereço da string saida para a pilha. Este é o formato string usado por printf.
         call printf ; chama a funcao externa
-        add esp, 8 ; manda ŕa pilha
+        add esp, 8 ; Ajusta o ponteiro da pilha (ESP) após a chamada da função. Como empurramos dois valores (8 bytes no total), ajustamos ESP para liberar espaço.
 
         mov EAX, 1 ; saida do programa
         mov ECX, 0
