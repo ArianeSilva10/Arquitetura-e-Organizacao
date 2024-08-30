@@ -13,36 +13,38 @@ section .data
 
 section .text
 calculo_sar:
-	mov eax, [v_sar]         ; Move o valor de v_shl para EAX
-	mov [a_sar], eax         ; Armazena o valor de EAX em a_shl
-	push DWORD [a_sar]       ; Coloca o valor de a_shl na pilha
-	push saida_ant_sar       ; Coloca a string de formato na pilha
-	call printf              ; Chama printf para imprimir o valor original
-	add esp, 8               ; Limpa os argumentos de printf da pilha
+	mov eax, [v_sar]     
+	mov [a_sar], eax        
+	push DWORD [a_sar]     
+	push saida_ant_sar     
+	call printf          
+	add esp, 8              
 	
-	mov ebx, [i]             ; Move o valor de i para EBX (contador)
+	mov ebx, [i]             
 laco_sar:
-	cmp ebx, [limite]        ; Compara o contador com o limite
-	jae next_sar             ; Se EBX >= limite, sai do loop
-	inc ebx                  ; Incrementa o contador
-	mov eax, [a_sar]         ; Move o valor atual de a_shl para EAX
-	sar eax, 1               ; Desloca à direita
-	mov [a_sar], eax         ; Atualiza o valor de a_shl
-	push DWORD [a_sar]       ; Coloca o novo valor de a_shl na pilha
-	push ebx                 ; Coloca o contador (EBX) na pilha
-	push DWORD [v_sar]       ; Coloca o valor original de v_shl na pilha
-	push saida_nov_sar       ; Coloca a string de formato na pilha
-	call printf              ; Chama printf para imprimir o novo valor
-	add esp, 16              ; Limpa os argumentos de printf da pilha
+	cmp ebx, [limite]      
+	jae next_sar             ; se EBX >= limite, sai do loop
+	inc ebx                
+
+	mov eax, [a_sar]         ; move o valor atual de a_shl para EAX
+	sar eax, 1               ; desloca
+	mov [a_sar], eax         ; atualiza o valor de a_shl
+
+	push DWORD [a_sar]    
+	push ebx              
+	push DWORD [v_sar]    
+	push saida_nov_sar   
+	call printf           
+	add esp, 16          
 	
-	jmp laco_sar             ; Volta ao início do loop
+	jmp laco_sar         
 	
 next_sar:
-	ret                      ; Retorna para a função chamadora
+	ret                   
 
 main:
-	mov ebp, esp             ; Para debugging correto
-	call calculo_sar         ; Chama a função calculo_shl
+	mov ebp, esp         
+	call calculo_sar        
 
-	xor EAX, EAX             ; Define EAX como 0 (valor de retorno)
-	ret                      ; Retorna da função main
+	xor EAX, EAX            
+	ret                
