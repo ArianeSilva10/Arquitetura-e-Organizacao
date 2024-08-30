@@ -9,40 +9,40 @@ section .data
 	limite dd 0x3
 	v_shr  dd 0x80
 	saida_ant_shr db "valor antigo shr: %d",0AH,0H
-	saida_nov_shr db "valor novo shr %d x/ (2^%d): %d",0AH,0H
+	saida_nov_shr db "valor novo shr %d / (2^%d): %d",0AH,0H
 
 section .text
 calculo_shr:
-	mov eax, [v_shr]         ; Move o valor de v_shl para EAX
-	mov [a_shr], eax         ; Armazena o valor de EAX em a_shl
-	push DWORD [a_shr]       ; Coloca o valor de a_shl na pilha
-	push saida_ant_shr       ; Coloca a string de formato na pilha
-	call printf              ; Chama printf para imprimir o valor original
-	add esp, 8               ; Limpa os argumentos de printf da pilha
+	mov eax, [v_shr]      
+	mov [a_shr], eax        
+	push DWORD [a_shr]      
+	push saida_ant_shr      
+	call printf             
+	add esp, 8            
 	
-	mov ebx, [i]             ; Move o valor de i para EBX (contador)
+	mov ebx, [i]          
 laco_shr:
-	cmp ebx, [limite]        ; Compara o contador com o limite
-	jae next_shr             ; Se EBX >= limite, sai do loop
-	inc ebx                  ; Incrementa o contador
-	mov eax, [a_shr]         ; Move o valor atual de a_shl para EAX
-	shr eax, 1               ; Desloca à direita
-	mov [a_shr], eax         ; Atualiza o valor de a_shl
-	push DWORD [a_shr]       ; Coloca o novo valor de a_shl na pilha
-	push ebx                 ; Coloca o contador (EBX) na pilha
-	push DWORD [v_shr]       ; Coloca o valor original de v_shl na pilha
-	push saida_nov_shr       ; Coloca a string de formato na pilha
-	call printf              ; Chama printf para imprimir o novo valor
-	add esp, 16              ; Limpa os argumentos de printf da pilha
+	cmp ebx, [limite]      
+	jae next_shr             ; se EBX >= limite, sai do loop
+	inc ebx                 
+	mov eax, [a_shr]         ; move o valor atual de a_shl para EAX
+	shr eax, 1               ; desloca
+	mov [a_shr], eax         ; atualiza o valor de a_shl
+	push DWORD [a_shr]     
+	push ebx              
+	push DWORD [v_shr]     
+	push saida_nov_shr     
+	call printf            
+	add esp, 16           
 	
-	jmp laco_shr             ; Volta ao início do loop
+	jmp laco_shr         
 	
 next_shr:
-	ret                      ; Retorna para a função chamadora
+	ret          
 
 main:
-	mov ebp, esp             ; Para debugging correto
-	call calculo_shr         ; Chama a função calculo_shl
+	mov ebp, esp          
+	call calculo_shr    
 
-	xor EAX, EAX             ; Define EAX como 0 (valor de retorno)
-	ret                      ; Retorna da função main
+	xor EAX, EAX        
+	ret

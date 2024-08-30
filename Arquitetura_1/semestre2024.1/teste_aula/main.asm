@@ -4,7 +4,7 @@ extern calculo_shl ;feito
 extern calculo_shr ;feito
 extern calculo_sar ;feito
 extern calculo_rol ; feito
-extern calculo_ror
+extern calculo_ror ; feito
 extern calculo_rcl
 extern calculo_rcr
 extern calculo_shld
