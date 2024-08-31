@@ -1,4 +1,4 @@
-global main
+global calculo_rol:function
 extern printf
 
 section .bss
@@ -43,11 +43,4 @@ laco_rol:
     jmp laco_rol            
     
 next_rol:
-    ret                       
-
-main:
-    mov ebp, esp            
-    call calculo_rol          
-
-    xor eax, eax             
-    ret                      
+    ret                                      

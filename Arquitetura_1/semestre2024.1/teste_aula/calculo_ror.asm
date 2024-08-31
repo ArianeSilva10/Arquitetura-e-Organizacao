@@ -1,4 +1,4 @@
-global main
+global calculo_ror:function
 extern printf
 
 section .bss
@@ -48,10 +48,3 @@ laco_ror:
     
 next_rol:
     ret                     
-
-main:
-    mov ebp, esp; for correct debugging
-    call calculo_ror            
-
-    xor eax, eax               
-    ret                        

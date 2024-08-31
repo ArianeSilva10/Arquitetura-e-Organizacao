@@ -1,4 +1,4 @@
-global main
+global calculo_sar:function
 extern printf
 
 section .bss
@@ -40,11 +40,4 @@ laco_sar:
 	jmp laco_sar         
 	
 next_sar:
-	ret                   
-
-main:
-	mov ebp, esp         
-	call calculo_sar        
-
-	xor EAX, EAX            
-	ret                
+	ret                               

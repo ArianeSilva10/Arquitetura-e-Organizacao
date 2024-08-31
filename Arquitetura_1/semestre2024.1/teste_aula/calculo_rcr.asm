@@ -1,8 +1,8 @@
-global main
+global calculo_rcr
 extern printf
 
 section .data
-    valor_inicial  db  0b10001000
+    valor_inicial  db  0b0010000
     i                dd  0x0      
     limite           dd  0x3    
     saida_valor_inicial db "valor antigo: %.8b, CF = %d", 0xA, 0x0
@@ -10,8 +10,9 @@ section .data
     flag: db 0
 
 section .text
-calculo_rcl:
-    clc
+calculo_rcr:
+    stc             ; set carry flag
+    
     mov al, [valor_inicial]
 
     lahf
@@ -29,16 +30,16 @@ calculo_rcl:
     
     mov ebx, [i]                
 
-laco_rcl:
-    clc
+laco_rcr:
+    stc             ; set carry flag
 
     cmp ebx, [limite]            
-    jae next_rcl                 
+    jae next_rcr                 
     inc ebx                      
 
     xor EAX, EAX
     mov al, byte[valor_inicial]
-  
+    
     cmp byte[flag], 1
     jne _else
     _if:
@@ -46,15 +47,15 @@ laco_rcl:
         jmp _end_if
     _else:
         clc
-    _end_if:
+     _end_if:
 
-    rcl al, 1                  
+    rcr al, 1            
     mov [valor_inicial], al
     
     lahf
     and ah, 1
     mov byte[flag], ah
-
+    
     movzx eax, al
     push ebx ; preserva o contador
 
@@ -65,13 +66,7 @@ laco_rcl:
     add esp, 12                 
     
     pop ebx
-    jmp laco_rcl               
+    jmp laco_rcr               
     
-next_rcl:
-    ret                          
-main:
-    mov ebp, esp                 
-    call calculo_rcl             
-    xor eax, eax                 
-
+next_rcr:
     ret                          
