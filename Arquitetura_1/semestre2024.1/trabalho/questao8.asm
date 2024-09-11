@@ -42,7 +42,7 @@ main:
     mov ECX, 9
     externo:
         lea ESI, [numeros] ; aponto para o primeiro elemento
-        mov EBX, ECX ; edx vai ser o contador interno
+        mov EBX, ECX ; ebx vai ser o contador interno
         
         interno:
             mov EAX, [ESI] ; primeiro elemento vai pra eax
@@ -63,12 +63,13 @@ main:
                 cmp ECX, 0
                 jne externo
                 
-    lea ESI, [numeros]
-    mov EAX, [ESI+4*8]
-    mov EBX, [ESI +4]
-    mov [segundo_maior], EAX
+    lea ESI, [numeros] ; posiciono esi para o primeiro elemento
+    mov EAX, [ESI+4*8] ; movo pra eax o segundo valor maior
+    mov EBX, [ESI +4] ; movo pra ebx o segundo valor menor
+    mov [segundo_maior], EAX ; movo pras variaveis
     mov [segundo_menor], EBX
 
+    ;isso acontece pq fiz o bubble sort, coloquei em ordem do menor para o menor
 
     push DWORD[segundo_maior]
     push saida_maior

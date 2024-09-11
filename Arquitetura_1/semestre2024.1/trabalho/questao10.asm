@@ -25,27 +25,27 @@ main:
         
         push media
         push tipo
-        call scanf
+        call scanf ; dgita a media
         add esp, 8
 
         mov EAX, [media]
-        cmp EAX, -1
+        cmp EAX, -1 ; se for -1 sai do loop
         je fim_leitura
 
         cmp EAX, -1
-        jl numero_invalido
+        jl numero_invalido ; se eax for menor q -1, está inválido
         cmp EAX, 10
-        jg numero_invalido
+        jg numero_invalido ; se for maior q 10, está inválido
 
         cmp EAX, 7
-        jge aprovado_p
-        jmp reprovado_p
+        jge aprovado_p ; maior ou igual a 7
+        jmp reprovado_p ; se não
 
     numero_invalido:
         push print_invalido
         call printf
         add esp, 8
-        jmp digitacao
+        jmp digitacao ; volta pra digitação pra digitar novamente a media
 
     aprovado_p:
         push print_aprovado

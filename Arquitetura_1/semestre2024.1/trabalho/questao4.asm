@@ -14,20 +14,21 @@ section .text
 main:
     push valor
     push tipo
-    call scanf
+    call scanf ; LEIO UM VALOR 
     add esp, 8
 
     xor EAX, EAX
-    mov EAX, [valor]
-    and EAX, 1
-    jz par
-    push DWORD[valor]
+    mov EAX, [valor] ; MOVO PRA EAX
+    and EAX, 1 ; SE O BIT MENOS SIGNIFICATIVO FOR 0 - PAR SENÃO ÍMPAR
+    jz par ; JUMP IF ZERO
+
+    push DWORD[valor] ; SE FOR IMPAR IMPRIME LOGO
     push saida_impar
     call printf
     add esp, 8
     jmp fim
 
-    par:
+    par: ; PULOU PRA CÁ SE FOR PAR
     push DWORD[valor]
     push saida_par
     call printf

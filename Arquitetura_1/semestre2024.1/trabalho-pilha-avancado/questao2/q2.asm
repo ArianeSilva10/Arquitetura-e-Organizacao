@@ -15,7 +15,7 @@ main:
     mov ebp, esp; for correct debugging
     
     
-    push dword 2
+    push dword 2 ; 2 para ebp + 8
 
     call funcao_soma
     mov [soma], EAX

@@ -27,6 +27,7 @@ section .data
 
 section .text
 main:
+    ; leio as 3 notas
     push n1
     push tipo
     call scanf
@@ -44,22 +45,22 @@ main:
 
     mov EAX, [n1]
     mov EBX, 1
-    mul EBX
+    mul EBX ; eax *= ebx
     mov [nota], EAX
 
     mov EAX, [n2]
     mov EBX, 2
-    mul EBX
+    mul EBX ; eax *= ebx
     add [nota], EAX
 
     mov EAX, [n3]
     mov EBX, 3
-    mul EBX
+    mul EBX ; eax *= ebx
     add [nota], EAX
 
     mov EAX, [nota]
     mov EBX, 6
-    div EBX
+    div EBX ; eax /= ebx
     mov [nota], EAX
 
     cmp EAX, 7

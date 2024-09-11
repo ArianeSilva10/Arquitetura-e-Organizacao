@@ -18,10 +18,10 @@ main:
     mov ebp, esp; for correct debugging
     
     
-    push dword 4
+    push dword 4 ; parametro
 
     call par
-    mov [a], EDX
+    mov [a], EDX ; o resto fica em edx
     
     cmp dword[a], 0
     je saida_par
@@ -29,7 +29,7 @@ main:
     push dword[a]
     push impressao_impar
     call printf
-    add esp, 12
+    add esp, 12 ; 4 B printf + 4 B parametro + 4 B retorno
     
     jmp fim0
     

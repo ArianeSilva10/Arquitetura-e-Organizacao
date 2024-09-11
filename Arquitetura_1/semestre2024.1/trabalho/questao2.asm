@@ -19,8 +19,8 @@ section .text
 main:
     xor EAX, EAX ; EAX = 0
     mov EAX, [b] ; EAX = 3
-    mov EBX, 2 ; EDX = 2
-    mul EBX ; EAX *EDX
+    mov EBX, 2 ; EBX = 2
+    mul EBX ; EAX * EBX
 
     mov [res1], EAX
 
@@ -28,18 +28,18 @@ main:
     xor EDX, EDX ; EDX = 0
 
     mov EAX, [c] ; EAX = 4
-    mov EBX, 2 ; EDX = 2
-    div EBX ; EAX = EAX/ EDX
+    mov EBX, 2 ; EBX = 2
+    div EBX ; EAX = EAX/ EBX
 
     mov [res2], EAX
 
-    xor EAX, EAX
-    mov EAX, [res1]
-    add EAX, [res2]
-    add EAX, 200
-    mov [a], EAX
+    xor EAX, EAX ; EAX = 0
+    mov EAX, [res1] ; EAX = 6
+    add EAX, [res2]  ; EAX+=2
+    add EAX, 200 ; EAX+= 200
+    mov [a], EAX ; a = EAX
 
-    push DWORD [a]
+    push DWORD [a] ; IMPRIME a
     push saida
     call printf
     add esp, 8

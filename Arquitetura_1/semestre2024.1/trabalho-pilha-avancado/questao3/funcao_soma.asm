@@ -11,7 +11,7 @@ section .text
 funcao_soma:
     push ebp
     mov ebp, esp
-    sub esp, 8
+    sub esp, 8 ; reservo 8 bytes na pilha
 
     mov dword[ebp - 4], 5
     mov dword[ebp - 8], 2

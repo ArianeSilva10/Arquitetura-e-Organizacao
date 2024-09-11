@@ -17,16 +17,16 @@ section .data
 
 section .text
 main:
-    mov dword[a], 5
+    mov dword[a], 5 ; a = 5
 
     xor EAX, EAX
     mov EAX, dword[a]
-    add EAX, 2
+    add EAX, 2 ;eax = 5 +2
 
     push EAX
     push dword[a]
     push saida
     call printf
-    add esp, 12
+    add esp, 12 ; 4 bytes do printf + 4 bytes de 'a' + 4 bytes do resultado eax = 12
 
 call fim

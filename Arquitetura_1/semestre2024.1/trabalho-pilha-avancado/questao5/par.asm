@@ -7,7 +7,8 @@ par:
     mov EAX, dword[ebp + 8]
     mov EBX, 2
     xor EDX, EDX
-    div EBX
+    div EBX ; divide o valor do parametro por 2
+    ;pode retornar eax  q é o resultado da divisão ou edx q é o modulo
 
     mov esp, ebp
     pop ebp

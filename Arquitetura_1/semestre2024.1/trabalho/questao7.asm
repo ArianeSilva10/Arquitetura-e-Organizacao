@@ -20,7 +20,7 @@ main:
     mov ECX, 0
 
     leitura:
-        lea EBX, [array + 4*ECX]
+        lea EBX, [array + 4*ECX] ; PEGA O ENDEREÇO DO PRIMEIRO ELEMENTO E JOGA EM EBX
 
         PUSH ECX
 

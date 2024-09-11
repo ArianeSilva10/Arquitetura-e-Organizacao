@@ -17,17 +17,17 @@ main:
     mov ECX, 1000
     loop_div:
         mov EAX, ECX
-        xor EDX, EDX
+        xor EDX, EDX ; ZERA O REG Q GUARDA O MODULO
         mov EBX, 11
         div EBX
 
         cmp EDX, 5
-        jne prox_valor
+        jne prox_valor ; SE NAO FOR IGUAL, PROXIMO VALOR
 
-        mov [numero], ECX
-        push ECX
+        mov [numero], ECX ; SE FOR IGUAL MOVE ECX PRA NUMERO
+        push ECX ; GUARDA O VALOR DE ECX
         
-        push DWORD[numero]
+        push DWORD[numero]; IMPRIME
         push saida
         call printf
         add esp, 8
@@ -36,8 +36,8 @@ main:
 
         prox_valor:
             inc ECX
-            cmp ECX, 2000
-            jl loop_div
+            cmp ECX, 2000 ; INCREMENTA ATÉ 1999
+            jl loop_div ; SE FOR MENOR QUE 2000 VOLTA PRO LOOP
 
     xor EAX, EAX
     ret

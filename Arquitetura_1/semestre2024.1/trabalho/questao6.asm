@@ -20,9 +20,9 @@ main:
     mov ECX, 0
 
     leitura:
-    lea EBX, [array + 4*ECX]
+    lea EBX, [array + 4*ECX] ; CALCULA O ENDEREÇO DE ARRAY E MOVE PRA EBX
 
-        PUSH ECX
+        PUSH ECX ; GUARDA ECX ANTES DE SCANF
 
         PUSH EBX
         push tipo
@@ -38,15 +38,15 @@ main:
 
 
     mov ECX, 9
-    mov EAX, [array]
-    lea ESI, [array+4]
+    mov EAX, [array] ; PRIMEIRO VALOR PRA EAX
+    lea ESI, [array+4] ; POSICIONA O PONTEIRO
     xor EBX, EBX
 
     operacao:
         mov EBX, [ESI]
-        add EAX, EBX
+        add EAX, EBX ; SOMA O PRIMEIRO E SEGUNDO VALOR
 
-        add ESI, 4
+        add ESI, 4 ; +4 BYTES
         dec ECX
         cmp ECX, 0
         jne operacao

@@ -6,8 +6,8 @@ funcao_soma:
     mov ebp, esp
 
     mov EAX, 0
-    add EAX, dword[ebp + 8]
-    add EAX, dword[ebp + 12]
+    add EAX, dword[ebp + 8] ; soma para parâmetro
+    add EAX, dword[ebp + 12] ; o retorno fica guardado em eax
 
     mov esp, ebp
     pop ebp
