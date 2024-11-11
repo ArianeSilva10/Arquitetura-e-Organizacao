@@ -44,3 +44,4 @@ section .text
     mov EAX, 1
     mov EBX, 0
     int 0x80
+    // teste
